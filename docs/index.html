@@ -684,6 +684,20 @@
                 height: 40px;
                 opacity: 0.02;
             }
+
+            /* 强制重写所有grid布局在移动端为单列 */
+            section .products-grid,
+            section .solutions-layout,
+            section .testimonials-grid,
+            section .about-layout,
+            .container .products-grid,
+            .container .solutions-layout,
+            .container .testimonials-grid,
+            .container .about-layout {
+                grid-template-columns: 1fr !important;
+                grid-template-areas: none !important;
+            }
+
         }
         
         @media (max-width: 480px) {
@@ -769,14 +783,18 @@
             
             /* 核心产品移动端优化 */
             .products-grid {
-                grid-template-columns: 1fr;
+                display: grid !important;
+                grid-template-columns: 1fr !important;
                 gap: 1.5rem;
                 padding: 0 0.5rem;
+                width: 100%;
             }
             
             .product-card {
                 padding: 1.5rem;
                 border-radius: 12px;
+                width: 100%;
+                max-width: none;
             }
             
             .product-number {
@@ -823,13 +841,17 @@
             
             /* 解决方案移动端优化 */
             .solutions-layout {
-                grid-template-columns: 1fr;
+                display: grid !important;
+                grid-template-columns: 1fr !important;
                 gap: 1.5rem;
+                width: 100%;
             }
             
             .solution-card {
                 padding: 1.5rem;
                 border-radius: 16px;
+                width: 100%;
+                max-width: none;
             }
             
             .solution-connector {
@@ -887,14 +909,18 @@
             
             /* 客户案例移动端优化 */
             .testimonials-grid {
-                grid-template-columns: 1fr;
+                display: grid !important;
+                grid-template-columns: 1fr !important;
                 gap: 1.5rem;
                 padding: 0 0.5rem;
+                width: 100%;
             }
             
             .testimonial-card {
                 padding: 1.5rem;
                 border-radius: 16px;
+                width: 100%;
+                max-width: none;
             }
             
             .testimonial-stats {
@@ -979,14 +1005,18 @@
             
             /* 关于我们移动端优化 */
             .about-layout {
-                grid-template-columns: 1fr;
+                display: grid !important;
+                grid-template-columns: 1fr !important;
                 gap: 1.5rem;
+                width: 100%;
             }
             
             .company-info-card,
             .contact-info-card {
                 padding: 1.5rem;
                 border-radius: 16px;
+                width: 100%;
+                max-width: none;
             }
             
             .company-slogan {
@@ -1085,6 +1115,61 @@
             .timeline-line,
             .timeline-dots {
                 display: none;
+            }
+            
+            /* 确保所有内容块在移动端100%宽度 */
+            .products-grid > *,
+            .solutions-layout > *,
+            .testimonials-grid > *,
+            .about-layout > * {
+                width: 100% !important;
+                max-width: 100% !important;
+                flex: none !important;
+            }
+            
+            /* 确保grid容器在移动端正确显示 */
+            .products-grid,
+            .solutions-layout,
+            .testimonials-grid,
+            .about-layout {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                grid-template-rows: auto !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                margin: 0 !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            
+            /* 专门针对各类卡片的移动端100%宽度设置 */
+            .product-card,
+            .solution-card,
+            .testimonial-card,
+            .company-info-card,
+            .contact-info-card {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                flex-basis: 100% !important;
+                flex-grow: 1 !important;
+                flex-shrink: 0 !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* 强制重写所有grid布局在移动端为单列 */
+            section .products-grid,
+            section .solutions-layout,
+            section .testimonials-grid,
+            section .about-layout,
+            .container .products-grid,
+            .container .solutions-layout,
+            .container .testimonials-grid,
+            .container .about-layout {
+                grid-template-columns: 1fr !important;
+                grid-template-areas: none !important;
             }
         }
         
