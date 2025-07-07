@@ -698,24 +698,6 @@
                 max-width: 300px;
             }
 
-            .grid-cols-3 {
-                grid-template-columns: 1fr;
-            }
-
-            .grid-cols-2 {
-                grid-template-columns: 1fr;
-            }
-
-            .card {
-                padding: 1.5rem;
-            }
-            
-            .ink-blot {
-                width: 120px;
-                height: 120px;
-                opacity: 0.03;
-            }
-            
             .ink-dot {
                 width: 40px;
                 height: 40px;
@@ -2225,13 +2207,6 @@
     <!-- 水墨背景层 -->
     <div class="ink-bg"></div>
     
-    <!-- 墨滴装饰 -->
-    <div class="ink-blot top-1/4 -left-20 float-animation"></div>
-    <div class="ink-blot bottom-1/3 -right-20 float-animation" style="animation-delay: 1s;"></div>
-    <div class="ink-blot top-2/3 left-1/3 float-animation" style="animation-delay: 2s;"></div>
-    <div class="ink-blot top-1/2 -right-32 float-animation" style="animation-delay: 3s;"></div>
-    <div class="ink-blot bottom-1/4 left-1/4 float-animation" style="animation-delay: 4s;"></div>
-    
     <!-- 小墨点装饰 -->
     <div class="ink-dot top-20 right-1/4 float-animation" style="animation-delay: 0.5s;"></div>
     <div class="ink-dot top-1/3 left-1/6 float-animation" style="animation-delay: 1.5s;"></div>
@@ -2971,14 +2946,6 @@
 
         // 装饰元素动画初始化
         function initializeDecorations() {
-            const inks = document.querySelectorAll('.ink-blot');
-            inks.forEach(ink => {
-                const scale = 0.8 + Math.random() * 0.4;
-                const opacity = 0.05 + Math.random() * 0.1;
-                ink.style.setProperty('--scale', scale);
-                ink.style.opacity = opacity;
-            });
-            
             const dots = document.querySelectorAll('.ink-dot');
             dots.forEach(dot => {
                 const scale = 0.7 + Math.random() * 0.6;
