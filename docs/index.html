@@ -725,10 +725,12 @@
             section .products-grid,
             section .solutions-layout,
             section .testimonials-grid,
+            section .partners-grid,
             section .about-layout,
             .container .products-grid,
             .container .solutions-layout,
             .container .testimonials-grid,
+            .container .partners-grid,
             .container .about-layout {
                 grid-template-columns: 1fr !important;
                 grid-template-areas: none !important;
@@ -1040,6 +1042,58 @@
                 right: 2%;
             }
             
+            /* 合伙人团队移动端优化 */
+            .partners-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem;
+            }
+            
+            .partner-card {
+                padding: 1.5rem;
+                margin: 0 0.5rem;
+            }
+            
+            .partner-avatar {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .partner-name {
+                font-size: 1.3rem;
+            }
+            
+            .partner-title {
+                font-size: 0.9rem;
+                padding: 0 0.5rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 1rem;
+                max-height: 85vh;
+            }
+            
+            .modal-header {
+                padding: 1.5rem 1.5rem 1rem;
+            }
+            
+            .modal-body {
+                padding: 0 1.5rem 1.5rem;
+            }
+            
+            .modal-avatar {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .modal-name {
+                font-size: 1.5rem;
+            }
+            
+            .modal-role {
+                font-size: 0.9rem;
+            }
+
             /* 关于我们移动端优化 */
             .about-layout {
                 display: grid !important;
@@ -1158,6 +1212,7 @@
             .products-grid > *,
             .solutions-layout > *,
             .testimonials-grid > *,
+            .partners-grid > *,
             .about-layout > * {
                 width: 100% !important;
                 max-width: 100% !important;
@@ -1168,6 +1223,7 @@
             .products-grid,
             .solutions-layout,
             .testimonials-grid,
+            .partners-grid,
             .about-layout {
                 display: grid !important;
                 grid-template-columns: 1fr !important;
@@ -1184,6 +1240,7 @@
             .product-card,
             .solution-card,
             .testimonial-card,
+            .partner-card,
             .company-info-card,
             .contact-info-card {
                 width: 100% !important;
@@ -1200,10 +1257,12 @@
             section .products-grid,
             section .solutions-layout,
             section .testimonials-grid,
+            section .partners-grid,
             section .about-layout,
             .container .products-grid,
             .container .solutions-layout,
             .container .testimonials-grid,
+            .container .partners-grid,
             .container .about-layout {
                 grid-template-columns: 1fr !important;
                 grid-template-areas: none !important;
@@ -1808,6 +1867,254 @@
         }
         
         /* ==========================================================================
+           合伙人团队样式
+           ========================================================================== */
+        .partners-section {
+            background: linear-gradient(135deg, rgba(15, 28, 63, 0.02) 0%, rgba(30, 58, 138, 0.02) 100%);
+            position: relative;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .partner-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(15, 28, 63, 0.08);
+            transition: all var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(15, 28, 63, 0.15);
+        }
+        
+        .partner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .partner-avatar {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .partner-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 8px 25px rgba(15, 28, 63, 0.15);
+            transition: all var(--transition-medium);
+        }
+        
+        .partner-card:hover .partner-avatar img {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(15, 28, 63, 0.25);
+        }
+        
+        .partner-role-badge {
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(15, 28, 63, 0.3);
+        }
+        
+        .partner-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        .partner-title {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+        }
+        
+        .partner-detail-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-secondary);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            font-size: 0.9rem;
+        }
+        
+        .partner-detail-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(15, 28, 63, 0.3);
+        }
+        
+        /* 合伙人模态框样式 */
+        .partner-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity var(--transition-medium);
+        }
+        
+        .partner-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform var(--transition-medium);
+            margin: 2rem;
+        }
+        
+        .partner-modal.show .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-header {
+            padding: 2rem 2rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+            color: var(--text-secondary);
+        }
+        
+        .modal-close:hover {
+            background: rgba(15, 28, 63, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .modal-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 8px 25px rgba(15, 28, 63, 0.15);
+            margin-bottom: 1rem;
+        }
+        
+        .modal-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-role {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-body {
+            padding: 0 2rem 2rem;
+        }
+        
+        .modal-description {
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-experience {
+            margin-bottom: 1rem;
+        }
+        
+        .modal-experience h4 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .modal-experience ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .modal-experience li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(15, 28, 63, 0.1);
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .modal-experience li:last-child {
+            border-bottom: none;
+        }
+        
+        .modal-experience li::before {
+            content: '•';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
            关于我们样式
            ========================================================================== */
         .about-section {
@@ -2262,6 +2569,7 @@
                     <li><a href="#products" class="nav-link">产品</a></li>
                     <li><a href="#solutions" class="nav-link">解决方案</a></li>
                     <li><a href="#cases" class="nav-link">案例</a></li>
+                    <li><a href="#partners" class="nav-link">团队</a></li>
                     <li><a href="#about" class="nav-link">关于</a></li>
                 </ul>
                 
@@ -2316,6 +2624,9 @@
                     </div>
                     <a href="#cases" class="nav-link" onclick="toggleMobileMenu()">
                         <span>案例</span>
+                    </a>
+                    <a href="#partners" class="nav-link" onclick="toggleMobileMenu()">
+                        <span>团队</span>
                     </a>
                     <a href="#about" class="nav-link" onclick="toggleMobileMenu()">
                         <span>关于</span>
@@ -2619,16 +2930,16 @@
             
             <div class="text-center mb-16 fade-in-up">
                 <div class="section-badge testimonial-badge">客户声音</div>
-                <h2 class="section-title cases-title">客户案例</h2>
+                <!--h2 class="section-title cases-title">客户案例</h2-->
                 <div class="testimonial-intro">
-                    <div class="testimonial-stats">
+                    <!--div class="testimonial-stats">
                         <div class="stat-item">
-                            <span class="stat-value">1000+</span>
+                            <span class="stat-value">500+</span>
                             <span class="stat-label">教师用户</span>
                         </div>
                         <div class="stat-divider"></div>
                         <div class="stat-item">
-                            <span class="stat-value">50+</span>
+                            <span class="stat-value">10+</span>
                             <span class="stat-label">合作院校</span>
                         </div>
                         <div class="stat-divider"></div>
@@ -2636,7 +2947,7 @@
                             <span class="stat-value">98%</span>
                             <span class="stat-label">满意度</span>
                         </div>
-                    </div>
+                    </div-->
                     <p class="section-subtitle">真实用户反馈，见证AI教育的力量</p>
                 </div>
             </div>
@@ -2731,6 +3042,58 @@
                         </div>
                     </div>
                 </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合伙人团队 -->
+    <section id="partners" class="section partners-section">
+        <div class="container">
+            <div class="text-center mb-16 fade-in-up">
+                <div class="section-badge partners-badge">核心团队</div>
+                <h2 class="section-title partners-title">合伙人</h2>
+                <p class="section-description">汇聚顶尖AI教育专家，共同推动教育科技创新</p>
+            </div>
+            
+            <div class="partners-grid">
+                <div class="partner-card fade-in-up" data-partner="qinbiao">
+                    <div class="partner-avatar">
+                        <img src="assets/lqb.jpg" alt="QinbiaoLi" />
+                    </div>
+                    <div class="partner-info">
+                        <h3 class="partner-name">Qinbiao Li</h3>
+                        <p class="partner-title">尚贤智启首席科学家 | 澳门大学科技学院助理教授 | 前牛津大学机器人所博士后 | 剑桥大学博士</p>
+                        <button class="partner-detail-btn" onclick="openPartnerModal('qinbiao')">
+                            查看详情
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="partner-card fade-in-up" data-partner="river">
+                    <div class="partner-avatar">
+                        <img src="assets/yhc.png" alt="River Yan" />
+                    </div>
+                    <div class="partner-info">
+                        <h3 class="partner-name">River Yan</h3>
+                        <p class="partner-title">尚贤智启COO | 互联网软件技术专家（20年资深经验）</p>
+                        <button class="partner-detail-btn" onclick="openPartnerModal('river')">
+                            查看详情
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="partner-card fade-in-up" data-partner="chen">
+                    <div class="partner-avatar">
+                        <img src="assets/czx.png" alt="Sam Chan" />
+                    </div>
+                    <div class="partner-info">
+                        <h3 class="partner-name">Sam Chan</h3>
+                        <p class="partner-title">尚贤智启课程产品经理 | 资深物理与STEM教育专家</p>
+                        <button class="partner-detail-btn" onclick="openPartnerModal('chen')">
+                            查看详情
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -2856,6 +3219,22 @@
         </div>
     </section>
 
+    <!-- 合伙人详情模态框 -->
+    <div id="partnerModal" class="partner-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closePartnerModal()">&times;</button>
+                <img id="modalAvatar" class="modal-avatar" src="" alt="" />
+                <h3 id="modalName" class="modal-name"></h3>
+                <p id="modalRole" class="modal-role"></p>
+            </div>
+            <div class="modal-body">
+                <div id="modalDescription" class="modal-description"></div>
+                <div id="modalExperience" class="modal-experience"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
@@ -2892,7 +3271,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 尚贤智启科技有限公司. 保留所有权利.</p>
+                <p>&copy; 2025 尚贤智启科技有限公司. 保留所有权利.</p>
             </div>
         </div>
     </footer>
@@ -3060,6 +3439,113 @@
         function startExperience() {
             alert('体验功能即将开放，敬请期待！');
         }
+
+        // 合伙人详情数据
+        const partnersData = {
+            qinbiao: {
+                name: '李庆标',
+                role: '尚贤智启首席科学家 | 澳门大学科技学院助理教授 | 前牛津大学机器人所博士后 | 剑桥大学博士',
+                avatar: 'assets/lqb.jpg',
+                description: 'Nature Machine Intelligence等顶刊研究论文发表者，2020年剑桥Wiseman Prize得主，2023年国家优秀自费留学生奖学金，谷歌学术引用1000+次，研究方向涵盖手术机器人术中影像的机器学习、医学诊断及多机器人和多智能体协作。',
+                experience: [
+                    '前剑桥大学博士研究员，研究多机器人系统的通讯感知运动规划',
+                    '前牛津大学机器人研究所博士后研究员',
+                    '前帝国学院医学机器人方向研究硕士，专注于医疗机器人和血氧饱和度估计'
+                ]
+            },
+            river: {
+                name: '严河存',
+                role: '尚贤智启COO | 互联网软件技术专家（20年资深经验）',
+                avatar: 'assets/yhc.png',
+                description: '20年互联网软件行业经验，多个大型软件项目产品经理或架构师，连续创业者，QPython+社区发起者及QPython App作者。',
+                experience: [
+                    '北京优趣天下创始人',
+                    '丝路广西科技创始人',
+                    '前Zynga高级软件工程师',
+                    '前绿盟科技产品经理',
+                    '前新浪高级软件工程师'
+                ]
+            },
+            chen: {
+                name: '陈焯轩',
+                role: '尚贤智启课程产品经理 | 资深物理与STEM教育专家',
+                avatar: 'assets/czx.png',
+                description: 'STEM教育实践者，大型语言模型与AI代理教育应用研究。',
+                experience: [
+                    '澳门中学物理与STEM课程教师',
+                    '澳门大学机电工程系硕士生'
+                ]
+            }
+        };
+
+        // 打开合伙人详情模态框
+        function openPartnerModal(partnerId) {
+            const partner = partnersData[partnerId];
+            if (!partner) return;
+
+            const modal = document.getElementById('partnerModal');
+            const modalAvatar = document.getElementById('modalAvatar');
+            const modalName = document.getElementById('modalName');
+            const modalRole = document.getElementById('modalRole');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalExperience = document.getElementById('modalExperience');
+
+            // 填充模态框内容
+            modalAvatar.src = partner.avatar;
+            modalAvatar.alt = partner.name;
+            modalName.textContent = partner.name;
+            modalRole.textContent = partner.role;
+            modalDescription.textContent = partner.description;
+
+            // 填充经历信息
+            if (partner.experience && partner.experience.length > 0) {
+                modalExperience.innerHTML = `
+                    <h4>工作经历</h4>
+                    <ul>
+                        ${partner.experience.map(exp => `<li>${exp}</li>`).join('')}
+                    </ul>
+                `;
+            } else {
+                modalExperience.innerHTML = '';
+            }
+
+            // 显示模态框
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+
+            // 防止背景滚动
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 关闭合伙人详情模态框
+        function closePartnerModal() {
+            const modal = document.getElementById('partnerModal');
+            modal.classList.remove('show');
+            
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        // 点击模态框背景关闭
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('partnerModal');
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closePartnerModal();
+                }
+            });
+
+            // ESC键关闭模态框
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closePartnerModal();
+                }
+            });
+        });
 
         function watchVideo() {
             alert('演示视频即将发布，敬请期待！');
